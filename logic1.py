@@ -13,7 +13,7 @@ class Logic1(QMainWindow, Ui_Gui1):
 
         self.push_submit.clicked.connect(lambda: self.submit())
 
-    def openWindow(self, studentsNUM):
+    def openWindow(self, studentsNUM) -> None:
         """
         this method is used for the creation of the second window which is the actual claculator
         :param studentsNUM: total number of students being sent to the next GUI
@@ -24,7 +24,7 @@ class Logic1(QMainWindow, Ui_Gui1):
         self.secondWindow.show()
         self.secondWindow.studentsLabelNum.setText(str(studentsNUM))
 
-    def submit(self):
+    def submit(self) -> None:
         """
         this function is for the submit button to work and also checks that the input is an int with exception
         handling and call the openWindow Button when the button is pressed
@@ -36,3 +36,5 @@ class Logic1(QMainWindow, Ui_Gui1):
             self.Number_Student.clear()
         except:
             self.label_editLine.setText(f'Enter an Integer value')
+            self.Number_Student.clear()
+            self.Number_Student.setFocus()

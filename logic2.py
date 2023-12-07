@@ -4,7 +4,7 @@ import csv
 
 
 class Logic2(QMainWindow, Ui_Gui2):
-    def __init__(self, mainWindow):
+    def __init__(self, mainWindow) -> None:
         """
         creates the window and connects all the buttons
         :param mainWindow: this param is the previous window it is used so that i can re call it
@@ -20,7 +20,7 @@ class Logic2(QMainWindow, Ui_Gui2):
         self.ConvertPush.clicked.connect(lambda: self.convertCSV())
         self.EditPush.clicked.connect((lambda: self.edit()))
 
-    def submit2(self):
+    def submit2(self) -> None:
         """
         this method does all the function after the button is pressed it checks for exceptions and also does all the
         labels
@@ -50,7 +50,7 @@ class Logic2(QMainWindow, Ui_Gui2):
         except:
             self.BigLabel.setText('Please Enter Integer Numbers ex. 50 60 70')
 
-    def PrintScores(self, score, HighScore):
+    def PrintScores(self, score, HighScore) -> str:
         """
         this method takes in a score and the high scores as well as the highest score and give it letter grade returning a letter
         :param score: one single score
@@ -68,7 +68,7 @@ class Logic2(QMainWindow, Ui_Gui2):
         else:
             return 'F'
 
-    def AverageScore(self, ScoreList, bestScore):
+    def AverageScore(self, ScoreList, bestScore) -> None:
         """
         this method takes in a list and the best score and finds the average of the scores that were types in
 
@@ -82,7 +82,7 @@ class Logic2(QMainWindow, Ui_Gui2):
         Average = AverageTestScore / len(ScoreList)
         self.AvgLabel.setText(f'The average score is {Average :.2f}, a grade {self.PrintScores(Average, bestScore)}')
 
-    def clear2(self):
+    def clear2(self) -> None:
         """
         this method clears out all the labels and sets everything back to normal
         :return:none
@@ -94,7 +94,7 @@ class Logic2(QMainWindow, Ui_Gui2):
         self.gradeBox.clear()
         self.gradeBox.setFocus()
 
-    def convertCSV(self):
+    def convertCSV(self) -> None:
         """
         this method convert the information and test scores into a simple csv file
         :return: none
@@ -110,7 +110,7 @@ class Logic2(QMainWindow, Ui_Gui2):
         self.BigLabel.setText('Close Both Window For File to Save')
         self.AvgLabel.clear()
 
-    def edit(self):
+    def edit(self) -> None:
         """
         this method hides the current Window and shows to main to Edit
         :return: none
