@@ -4,10 +4,12 @@ import csv
 
 
 class Logic2(QMainWindow, Ui_Gui2):
-    def __init__(self):
+    def __init__(self, mainWindow):
         super().__init__()
         self.setupUi(self)
         self.scoreList = []
+        self.mainWindow = mainWindow
+
 
         self.SubPush.clicked.connect(lambda: self.submit2())
         self.ClearPush.clicked.connect(lambda: self.clear2())
@@ -52,6 +54,13 @@ class Logic2(QMainWindow, Ui_Gui2):
             return 'F'
 
     def AverageScore(self, ScoreList, bestScore):
+        """
+        this method takes in a list and the best score and finds the average of the scores that were types in
+
+        :param ScoreList: List of all the score
+        :param bestScore: the max score on the list that was find before it was sent here
+        :return: it does not return anything but changes the AvgLabel to display the average
+        """
         AverageTestScore = 0
         for i in range(len(ScoreList)):
             AverageTestScore += int(ScoreList[i])
@@ -59,6 +68,10 @@ class Logic2(QMainWindow, Ui_Gui2):
         self.AvgLabel.setText(f'The average score is {Average :.2f}, a grade {self.PrintScores(Average, bestScore)}')
 
     def clear2(self):
+        """
+        this method clears out all the labels and sets everything back to normal
+        :return:
+        """
         self.BigLabel.setText('Example to Type 30 40 50 60\nONLY Integers no commas')
         self.scoreList.clear()
         self.SubPush.setHidden(False)
@@ -79,4 +92,5 @@ class Logic2(QMainWindow, Ui_Gui2):
         self.AvgLabel.clear()
 
     def edit(self):
-        self.close()
+        self.mainWindow.show()
+        self.hide()
